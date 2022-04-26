@@ -88,6 +88,7 @@ namespace Kommivoyajer
                 };
                 _graph = new Node(a);
             }
+            
 
             public void SearchGm() //внешний класс Гамильтонов
             {
@@ -101,10 +102,7 @@ namespace Kommivoyajer
                 _graph.SearchGm(1, ref st, ref count, ref minimum, ref way);
                 Console.WriteLine($"Количество вариантов путей: {count}");
                 Console.Write("Путь: ");
-                foreach (var item in way)
-                {
-                    Console.Write($"{item} ");
-                }
+                foreach (var item in way) Console.Write($"{item} ");
                 Console.WriteLine($"\nМинимальное расстояние: {minimum}");
             }
 
@@ -136,30 +134,24 @@ namespace Kommivoyajer
                     for (var i = 0; i < Size; i++) _nov[i] = true;
                 }
 
-                public void SearchGm(int k, ref int[] st, ref int count, ref int minimum, ref int[] way) //вложенный класс
+                public void SearchGm(int k, ref int[] st, ref int count, ref int minimum,
+                    ref int[] way) //вложенный класс
                 {
                     var v = st[k - 1];
                     for (var j = 0; j < _array.GetLength(0); j++)
                         if (_array[v, j] != 0)
                         {
-
                             if (k == _array.GetLength(0) && j == 0)
                             {
                                 var sum = 0;
                                 st[k] = j;
                                 foreach (var item in st) Console.Write("{0} ", item + 1);
-                                for (var i = 0; i < st.Length - 1; i++)
-                                {
-                                    sum += _array[st[i], st[i + 1]];
-                                }
+                                for (var i = 0; i < st.Length - 1; i++) sum += _array[st[i], st[i + 1]];
                                 Console.WriteLine($"Сумма = {sum}");
                                 if (sum < minimum)
                                 {
                                     minimum = sum;
-                                    for (var i = 0; i < st.Length; i++)
-                                    {
-                                        way[i] = st[i] + 1;
-                                    }
+                                    for (var i = 0; i < st.Length; i++) way[i] = st[i] + 1;
                                 }
 
                                 Console.WriteLine("\n-----\n");
