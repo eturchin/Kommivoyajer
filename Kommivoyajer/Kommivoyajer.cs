@@ -70,7 +70,6 @@ namespace Kommivoyajer
                                 minimum = sum;
                                 for (var i = 0; i < st.Length; i++) way[i] = st[i] + 1;
                             }
-
                             Console.WriteLine("\n-----\n");
                             count++;
                         }

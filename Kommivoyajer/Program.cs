@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Kommivoyajer
 {
@@ -37,6 +38,8 @@ namespace Kommivoyajer
                             }
                             else
                             {
+                                Console.Write($"Путь между городами [{i+1}->{j+1}]:");
+                                
                                 while (!int.TryParse(Console.ReadLine(), out matrix[i,j]))
                                 {
                                     Console.Write("Ошибка ввода! Введите целое число:");
@@ -45,7 +48,8 @@ namespace Kommivoyajer
                         Console.WriteLine();
                         var graph = new Graph(matrix);
                         graph.SearchGm();
-                        Console.ReadKey();
+                        ConsoleExtension.ShowArray(matrix);
+                        ConsoleExtension.EndOfCase();
                         break;
                     case 2:
                         int[,] defaultArray =
@@ -59,10 +63,24 @@ namespace Kommivoyajer
                         };
                         graph = new Graph(defaultArray);
                         graph.SearchGm();
-                        Console.ReadKey();
+                        ConsoleExtension.ShowArray(defaultArray);
+
+                        ConsoleExtension.EndOfCase();
+                        break;
+                    case 3:
+                        Console.WriteLine("\tПрограмма для решения задачи Коммивояжера перебором\n" +
+                                          "\tПри помощи цикла Гамильтона\n" +
+                                          "\t---------\n" +
+                                          "\tРазработчик: Титова Ксения Олеговна\n" +
+                                          "\tГруппа: А01ИСТ2\n");
+                        ConsoleExtension.EndOfCase();
                         break;
                     case 0:
                         return;
+                    default:
+                        Console.WriteLine("Введите число, которое есть в меню.\n");
+                        ConsoleExtension.EndOfCase();
+                        break;
                 }
 
                 Console.Clear();
