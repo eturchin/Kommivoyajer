@@ -1,0 +1,1 @@
+The traveling salesman problem is one of the most famous combinatorial optimization problems, which consists of finding the most profitable route that passes through specified cities at least once and then returns to the original city.
